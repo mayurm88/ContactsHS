@@ -4,6 +4,8 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>contactSanity.hpp</itemPath>
+      <itemPath>contacts.hpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -12,6 +14,8 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>contactSanity.cpp</itemPath>
+      <itemPath>contacts.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -30,12 +34,20 @@
   <confs>
     <conf name="Debug" type="1">
       <toolsSet>
-        <compilerSet>default</compilerSet>
+        <compilerSet>GNU|GNU</compilerSet>
         <dependencyChecking>true</dependencyChecking>
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="contactSanity.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="contactSanity.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="contacts.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="contacts.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -59,6 +71,14 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="contactSanity.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="contactSanity.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="contacts.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="contacts.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
