@@ -16,9 +16,11 @@ using namespace std;
 #define ERR_ALLOCATION 3
 
 
-int checkFormat(string name);
+int doInputSanity(string name);
 void reportErr(int err);
 void splitName(string name, string& fName, string& lName);
-
+string convertToOurFormat(string name);
+string trimWhiteSpaces(string name);
+string capitalize(string name);
 #endif	/* CONTACTSANITY_HPP */
 

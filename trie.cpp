@@ -68,12 +68,12 @@ void traverseTrie(contactTrie* root, set<string>& results){
     if(root->isLeafNode){
         contactNode = root->fcontact;
         while(contactNode){
-            results.insert(contactNode->firstName + " " + contactNode->lastName);
+            results.insert(capitalize(contactNode->firstName) + " " + capitalize(contactNode->lastName));
             contactNode = contactNode->fnext;
         }
         contactNode = root->lcontact;
         while(contactNode){
-            results.insert(contactNode->firstName + " " + contactNode->lastName);
+            results.insert(capitalize(contactNode->firstName) + " " + capitalize(contactNode->lastName));
             contactNode = contactNode->lnext;
         }
     }

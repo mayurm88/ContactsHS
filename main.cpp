@@ -25,7 +25,7 @@ int main(int argc, char** argv) {
     int choice = 0;
     int err;
     char inp[100];
-    string name, firstName, lastName;
+    string name, firstName, lastName, formatName;
     set<string> results;
     set<string>::iterator it;
     contactTrie* rootTrie = new contactTrie;
@@ -43,12 +43,13 @@ int main(int argc, char** argv) {
                 if(name.empty())
                     continue;
                 transform(name.begin(), name.end(), name.begin(), ::tolower);
-                err = checkFormat(name);
+                err = doInputSanity(name);
                 if(err != 0){
                     reportErr(err);
                     break;
                 }
-                splitName(name, firstName, lastName);
+                formatName = convertToOurFormat(name);
+                splitName(formatName, firstName, lastName);
                 contactNode = addContact(firstName, lastName);
                 err = addStringToTrie(rootTrie, firstName, contactNode, true);
                 if(!lastName.empty())
@@ -59,8 +60,17 @@ int main(int argc, char** argv) {
                 cin.getline(inp, 100);
                 name = inp;
                 transform(name.begin(), name.end(), name.begin(), ::tolower);
-                err = checkFormat(name);
-                splitName(name, firstName, lastName);
+                if(name.empty()){
+                    searchName(rootTrie, name, results);
+                    break;
+                }
+                err = doInputSanity(name);
+                if(err != 0){
+                    reportErr(err);
+                    break;
+                }
+                formatName = convertToOurFormat(name);
+                splitName(formatName, firstName, lastName);
                 results.clear();
                 if(lastName.empty())
                     searchName(rootTrie, firstName, results);
@@ -68,8 +78,11 @@ int main(int argc, char** argv) {
                     searchName(rootTrie, firstName, results);
                     removeNonLastNames(results, lastName);
                 }
-                for(it=results.begin(); it != results.end(); ++it)
-                    cout<<*it<<endl;
+                if(results.empty())
+                    cout<<"No matching results found."<<endl;
+                else
+                    for(it=results.begin(); it != results.end(); ++it)
+                        cout<<*it<<endl;
                 break;
             default:
                 break;
