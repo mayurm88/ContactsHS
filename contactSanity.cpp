@@ -9,7 +9,7 @@ int checkFormat(string name){
     //Implement checking of input format
     size_t pos;
     pos = name.find_first_not_of("abcdefghijklmnopqrstuvwxyz \t");
-    if(pos != std::string::npos)
+    if(pos != string::npos)
         return ERR_NONALPHA;
     if (name.length() > 50)
         return ERR_TOOLONG;
@@ -34,15 +34,16 @@ void splitName(string name, string& fName, string& lName){
     string trimmedName = name.substr(pos, posEnd+1);
     
     pos = trimmedName.find_first_of(" \t");
-    if(pos == std::string::npos){
+    if(pos == string::npos){
         fName = name;
         lName = "";
         return;
     }
+    fName = trimmedName.substr(0, pos);
     trimmedName.erase(0, pos+1);
     //cout<<"After first name erase trimmedName is : "<<trimmedName<<endl;
     pos = trimmedName.find_first_not_of(" \t");
-    if(pos == std::string::npos)
+    if(pos == string::npos)
         lName = "";
     else
         lName = trimmedName.substr(pos, trimmedName.length());

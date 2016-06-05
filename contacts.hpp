@@ -9,6 +9,8 @@
 #define	CONTACTS_HPP
 
 #include<set>
+
+#include "trie.hpp"
 using namespace std;
 
 
@@ -24,7 +26,7 @@ struct contactHead{
 }typedef contacthead_t;
 
 contact_t* addContact(string firstName, string lastName);
-void searchName(string name, set<string>& results);
+void searchName(struct trie* root, string name, set<string>& results);
 
 #endif	/* CONTACTS_HPP */
 

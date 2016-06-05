@@ -40,7 +40,7 @@ int main(int argc, char** argv) {
                 cout<<"Enter name : ";
                 cin.getline(inp, 100);
                 name = inp;
-                if(name == "")
+                if(name.empty())
                     continue;
                 transform(name.begin(), name.end(), name.begin(), ::tolower);
                 err = checkFormat(name);
@@ -49,17 +49,19 @@ int main(int argc, char** argv) {
                     break;
                 }
                 splitName(name, firstName, lastName);
+                //cout<<"After splitName : "<<firstName<<" "<<lastName<<endl;
                 contactNode = addContact(firstName, lastName);
-                err = addStringToTrie(firstName, contactNode, true);
+                //cout<<"After add contact firstname : "<<contactNode->firstName<<" lastname : "<<contactNode->lastName<<endl;
+                err = addStringToTrie(rootTrie, firstName, contactNode, true);
                 if(!lastName.empty())
-                    err = addStringToTrie(lastName, contactNode, false);
+                    err = addStringToTrie(rootTrie, lastName, contactNode, false);
                 break;
             case 2:
                 cout<<"Enter name : ";
                 cin.getline(inp, 100);
                 name = inp;
                 transform(name.begin(), name.end(), name.begin(), ::tolower);
-                searchName(name, results);
+                searchName(rootTrie, name, results);
                 for(it=results.begin(); it != results.end(); ++it)
                     cout<<*it<<endl;
                 break;

@@ -13,15 +13,18 @@
 
 using namespace std;
 #define NUMBER_CHILDREN 26
+#define CHAR_TO_INX(ch) ((int)(ch) - (int)'a')
+
 
 struct trie{
     struct trie* child[NUMBER_CHILDREN];
-    contact_t *contactNode;
+    struct contact *contactNode;
     bool isLeafNode;
 }typedef contactTrie;
 
-int addStringToTrie(string str, struct contact *contactToInsert, bool first_name);
+int addStringToTrie(contactTrie* root, string str, struct contact *contactToInsert, bool first_name);
 void initTrie(contactTrie*);
+void traverseTrie(contactTrie* root, set<string>& results);
 
 #endif	/* TRIE_HPP */
 

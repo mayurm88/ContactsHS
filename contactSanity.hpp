@@ -13,6 +13,7 @@ using namespace std;
 
 #define ERR_NONALPHA 1
 #define ERR_TOOLONG 2
+#define ERR_ALLOCATION 3
 
 
 int checkFormat(string name);

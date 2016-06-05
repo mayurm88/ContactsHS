@@ -6,7 +6,6 @@
 using namespace std;
 
 contact_t* addContact(string firstName, string lastName){
-    int err = 0;
     contact_t *contactToInsert = new contact_t;
     contactToInsert->firstName = firstName;
     contactToInsert->lastName = lastName;
@@ -15,6 +14,9 @@ contact_t* addContact(string firstName, string lastName){
     return contactToInsert;
 }
 
-void searchName(string name, set<string>& results){
-    
+void searchName(contactTrie* root, string name, set<string>& results){
+    if(name.empty()){
+        results.clear();
+        traverseTrie(root, results);
+    }
 }
