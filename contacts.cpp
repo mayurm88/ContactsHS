@@ -25,6 +25,8 @@ void searchName(contactTrie* root, string name, set<string>& results){
 string getLastNameFromString(string name){
     size_t pos;
     pos = name.find_first_of(" \t");
+    if(pos == string::npos)
+        return "";
     string lastName = name.substr(pos+1, name.length() - pos);
     return lastName;
 }
@@ -34,6 +36,10 @@ void removeNonLastNames(set<string>& results, string lastName){
     string fullLastName;
     for(it=results.begin(); it != results.end(); ++it){
         fullLastName = getLastNameFromString(*it);
+        if(fullLastName.empty()){
+            results.erase(it);
+            continue;
+        }
         if(fullLastName.compare(0, lastName.size(), lastName))
             results.erase(it);
     }
