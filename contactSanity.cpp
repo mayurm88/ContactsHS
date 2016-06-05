@@ -41,7 +41,6 @@ void splitName(string name, string& fName, string& lName){
     }
     fName = trimmedName.substr(0, pos);
     trimmedName.erase(0, pos+1);
-    //cout<<"After first name erase trimmedName is : "<<trimmedName<<endl;
     pos = trimmedName.find_first_not_of(" \t");
     if(pos == string::npos)
         lName = "";

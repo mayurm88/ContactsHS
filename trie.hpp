@@ -18,13 +18,15 @@ using namespace std;
 
 struct trie{
     struct trie* child[NUMBER_CHILDREN];
-    struct contact *contactNode;
+    struct contact *fcontact;
+    struct contact *lcontact;
     bool isLeafNode;
 }typedef contactTrie;
 
 int addStringToTrie(contactTrie* root, string str, struct contact *contactToInsert, bool first_name);
 void initTrie(contactTrie*);
 void traverseTrie(contactTrie* root, set<string>& results);
+void searchTrie(contactTrie* root, string name, set<string>& results);
 
 #endif	/* TRIE_HPP */
 

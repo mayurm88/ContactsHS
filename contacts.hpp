@@ -27,6 +27,7 @@ struct contactHead{
 
 contact_t* addContact(string firstName, string lastName);
 void searchName(struct trie* root, string name, set<string>& results);
-
+void removeNonLastNames(set<string>& results, string lastName);
+string getLastNameFromString(string);
 #endif	/* CONTACTS_HPP */
 
