@@ -11,9 +11,6 @@
 #include<set>
 using namespace std;
 
-int addName(string firstName, string lastName);
-void searchName(string name, set<string>& results);
-
 
 struct contact{
     string firstName;
@@ -25,6 +22,9 @@ struct contact{
 struct contactHead{
     struct contact *first;
 }typedef contacthead_t;
+
+contact_t* addContact(string firstName, string lastName);
+void searchName(string name, set<string>& results);
 
 #endif	/* CONTACTS_HPP */
 

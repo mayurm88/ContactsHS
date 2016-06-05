@@ -18,6 +18,7 @@
       <itemPath>contactSanity.cpp</itemPath>
       <itemPath>contacts.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
+      <itemPath>trie.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -54,6 +55,8 @@
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="trie.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="trie.hpp" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
@@ -86,6 +89,8 @@
       <item path="contacts.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="trie.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="trie.hpp" ex="false" tool="3" flavor2="0">
       </item>

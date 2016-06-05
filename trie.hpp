@@ -8,16 +8,20 @@
 #ifndef TRIE_HPP
 #define	TRIE_HPP
 
+#include <string>
 #include "contacts.hpp"
 
+using namespace std;
 #define NUMBER_CHILDREN 26
 
 struct trie{
-    char c;
     struct trie* child[NUMBER_CHILDREN];
     contact_t *contactNode;
     bool isLeafNode;
 }typedef contactTrie;
+
+int addStringToTrie(string str, struct contact *contactToInsert, bool first_name);
+void initTrie(contactTrie*);
 
 #endif	/* TRIE_HPP */
 

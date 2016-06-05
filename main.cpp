@@ -26,9 +26,11 @@ int main(int argc, char** argv) {
     int err;
     char inp[100];
     string name, firstName, lastName;
-    
     set<string> results;
     set<string>::iterator it;
+    contactTrie* rootTrie = new contactTrie;
+    contact_t* contactNode;
+    initTrie(rootTrie);
     while(choice != 3){
         cout<<"1) Add contact 2) Search 3) Exit"<<endl;
         cin>>choice;
@@ -38,6 +40,8 @@ int main(int argc, char** argv) {
                 cout<<"Enter name : ";
                 cin.getline(inp, 100);
                 name = inp;
+                if(name == "")
+                    continue;
                 transform(name.begin(), name.end(), name.begin(), ::tolower);
                 err = checkFormat(name);
                 if(err != 0){
@@ -45,7 +49,10 @@ int main(int argc, char** argv) {
                     break;
                 }
                 splitName(name, firstName, lastName);
-                err = addName(firstName, lastName);
+                contactNode = addContact(firstName, lastName);
+                err = addStringToTrie(firstName, contactNode, true);
+                if(!lastName.empty())
+                    err = addStringToTrie(lastName, contactNode, false);
                 break;
             case 2:
                 cout<<"Enter name : ";
