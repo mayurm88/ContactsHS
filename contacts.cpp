@@ -1,11 +1,12 @@
 #include<string>
+#include<set>
 
 using namespace std;
 
-int addName(string name){
+int addName(string firstName, string lastName){
     return 0;
 }
 
-string searchName(string name){
-    return " ";
+void searchName(string name, set<string>& results){
+    
 }

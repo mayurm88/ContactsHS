@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>contactSanity.hpp</itemPath>
       <itemPath>contacts.hpp</itemPath>
+      <itemPath>trie.hpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -39,6 +40,9 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <ccTool>
+          <commandLine>-I/usr/local/include</commandLine>
+        </ccTool>
       </compileType>
       <item path="contactSanity.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -49,6 +53,8 @@
       <item path="contacts.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="trie.hpp" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -80,6 +86,8 @@
       <item path="contacts.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="trie.hpp" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

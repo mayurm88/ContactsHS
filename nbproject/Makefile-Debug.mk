@@ -44,8 +44,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=
-CXXFLAGS=
+CCFLAGS=-I/usr/local/include
+CXXFLAGS=-I/usr/local/include
 
 # Fortran Compiler Flags
 FFLAGS=

@@ -8,17 +8,18 @@
 #ifndef CONTACTS_HPP
 #define	CONTACTS_HPP
 
+#include<set>
 using namespace std;
 
-int addName(string name);
-string searchName(string name);
+int addName(string firstName, string lastName);
+void searchName(string name, set<string>& results);
 
 
 struct contact{
     string firstName;
     string lastName;
-    int visited;
-    struct contact *next;
+    struct contact *fnext;
+    struct contact *lnext;
 }typedef contact_t;
 
 struct contactHead{

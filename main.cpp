@@ -9,6 +9,9 @@
 #include <cctype>
 #include <iostream>
 #include <string>
+#include <set>
+#include <algorithm>
+#include "trie.hpp"
 #include "contacts.hpp"
 #include "contactSanity.hpp"
 
@@ -21,32 +24,37 @@ int main(int argc, char** argv) {
     
     int choice = 0;
     int err;
-    char inp[51];
-    string name;
-    string results;
+    char inp[100];
+    string name, firstName, lastName;
+    
+    set<string> results;
+    set<string>::iterator it;
     while(choice != 3){
         cout<<"1) Add contact 2) Search 3) Exit"<<endl;
         cin>>choice;
-        cin.ignore(256, '\n');
+        cin.ignore(1024, '\n');
         switch(choice){
             case 1:
                 cout<<"Enter name : ";
-                cin.getline(inp, 50);
+                cin.getline(inp, 100);
                 name = inp;
+                transform(name.begin(), name.end(), name.begin(), ::tolower);
                 err = checkFormat(name);
                 if(err != 0){
                     reportErr(err);
                     break;
                 }
-                transform(name.begin(), name.end(), name.begin(), ::tolower);
-                //cout<<"Lower name is : "<<name<<endl;
-                err = addName(name);
+                splitName(name, firstName, lastName);
+                err = addName(firstName, lastName);
                 break;
             case 2:
                 cout<<"Enter name : ";
-                cin.getline(inp, 50);
+                cin.getline(inp, 100);
                 name = inp;
-                results = searchName(name);
+                transform(name.begin(), name.end(), name.begin(), ::tolower);
+                searchName(name, results);
+                for(it=results.begin(); it != results.end(); ++it)
+                    cout<<*it<<endl;
                 break;
             default:
                 break;

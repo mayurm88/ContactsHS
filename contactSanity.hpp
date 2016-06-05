@@ -8,8 +8,16 @@
 #ifndef CONTACTSANITY_HPP
 #define	CONTACTSANITY_HPP
 
+#include <string>
+using namespace std;
+
+#define ERR_NONALPHA 1
+#define ERR_TOOLONG 2
+
+
 int checkFormat(string name);
 void reportErr(int err);
+void splitName(string name, string& fName, string& lName);
 
 #endif	/* CONTACTSANITY_HPP */
 
