@@ -33,59 +33,72 @@ int main(int argc, char** argv) {
     initTrie(rootTrie);
     while(choice != 3){
         cout<<"1) Add contact 2) Search 3) Exit"<<endl;
-        cin>>choice;
-        cin.ignore(1024, '\n');
-        switch(choice){
-            case 1:
-                cout<<"Enter name : ";
-                cin.getline(inp, 100);
-                name = inp;
-                if(name.empty())
-                    continue;
-                transform(name.begin(), name.end(), name.begin(), ::tolower);
-                err = doInputSanity(name);
-                if(err != 0){
-                    reportErr(err);
+        if(cin>>choice){
+            cin.ignore(1024, '\n');
+            switch(choice){
+                case 1:
+                    cout<<"Enter name : ";
+                    cin.getline(inp, 100);
+                    name = inp;
+                    if(name.empty())
+                        continue;
+                    transform(name.begin(), name.end(), name.begin(), ::tolower);
+                    err = doInputSanity(name);
+                    if(err != 0){
+                        reportErr(err);
+                        break;
+                    }
+                    formatName = convertToOurFormat(name);
+                    splitName(formatName, firstName, lastName);
+                    contactNode = addContact(firstName, lastName);
+                    err = addStringToTrie(rootTrie, firstName, contactNode, true);
+                    if(!lastName.empty())
+                        err = addStringToTrie(rootTrie, lastName, contactNode, false);
                     break;
-                }
-                formatName = convertToOurFormat(name);
-                splitName(formatName, firstName, lastName);
-                contactNode = addContact(firstName, lastName);
-                err = addStringToTrie(rootTrie, firstName, contactNode, true);
-                if(!lastName.empty())
-                    err = addStringToTrie(rootTrie, lastName, contactNode, false);
-                break;
-            case 2:
-                cout<<"Enter name : ";
-                cin.getline(inp, 100);
-                name = inp;
-                transform(name.begin(), name.end(), name.begin(), ::tolower);
-                if(name.empty()){
-                    searchName(rootTrie, name, results);
+                case 2:
+                    cout<<"Enter name : ";
+                    cin.getline(inp, 100);
+                    name = inp;
+                    transform(name.begin(), name.end(), name.begin(), ::tolower);
+                    if(name.empty()){
+                        searchName(rootTrie, name, results);
+                        break;
+                    }
+                    err = doInputSanity(name);
+                    if(err != 0){
+                        reportErr(err);
+                        break;
+                    }
+                    formatName = convertToOurFormat(name);
+                    splitName(formatName, firstName, lastName);
+                    results.clear();
+                    if(lastName.empty())
+                        searchName(rootTrie, firstName, results);
+                    else{
+                        searchName(rootTrie, firstName, results);
+                        removeNonLastNames(results, lastName);
+                    }
+                    if(results.empty())
+                        cout<<"No matching results found."<<endl;
+                    else
+                        for(it=results.begin(); it != results.end(); ++it)
+                            cout<<*it<<endl;
                     break;
-                }
-                err = doInputSanity(name);
-                if(err != 0){
-                    reportErr(err);
+                default:
                     break;
-                }
-                formatName = convertToOurFormat(name);
-                splitName(formatName, firstName, lastName);
-                results.clear();
-                if(lastName.empty())
-                    searchName(rootTrie, firstName, results);
-                else{
-                    searchName(rootTrie, firstName, results);
-                    removeNonLastNames(results, lastName);
-                }
-                if(results.empty())
-                    cout<<"No matching results found."<<endl;
-                else
-                    for(it=results.begin(); it != results.end(); ++it)
-                        cout<<*it<<endl;
-                break;
-            default:
-                break;
+            }
+        }else if(cin.bad()){
+            cerr<<"Exiting.. Bad input."<<endl;
+            cin.clear();
+            exit(1);
+        }else if(cin.eof()){
+            cerr<<"Exiting.. Reached eof."<<endl;
+            cin.clear();
+            exit(1);
+        }else{
+            cerr<<"Exiting.. Format error."<<endl;
+            cin.clear();
+            exit(1);
         }
     }
     return 0;
