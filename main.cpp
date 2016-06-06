@@ -88,17 +88,16 @@ int main(int argc, char** argv) {
                     break;
             }
         }else if(cin.bad()){
-            cerr<<"Exiting.. Bad input."<<endl;
+            cerr<<"Bad input. Please try again"<<endl;
             cin.clear();
-            exit(1);
+            cin.ignore(INT_MAX, '\n');
         }else if(cin.eof()){
-            cerr<<"Exiting.. Reached eof."<<endl;
-            cin.clear();
-            exit(1);
+            cerr<<"Got EOF. Exiting."<<endl;
+            exit(0);
         }else{
-            cerr<<"Exiting.. Format error."<<endl;
+            cerr<<"Format error. Please try again."<<endl;
             cin.clear();
-            exit(1);
+            cin.ignore(INT_MAX, '\n');
         }
     }
     return 0;
