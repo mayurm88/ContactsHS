@@ -1,9 +1,7 @@
 #include <assert.h>
-#include<iostream>
 #include "trie.hpp"
 #include "contactSanity.hpp"
 
-using namespace std;
 void initTrie(contactTrie* trie){
     for(int i = 0; i < NUMBER_CHILDREN; i++)
         trie->child[i] = NULL;

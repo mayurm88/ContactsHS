@@ -2,7 +2,6 @@
 #include<set>
 
 #include "contacts.hpp"
-#include<iostream>
 #include "trie.hpp"
 #include "contactSanity.hpp"
 using namespace std;
