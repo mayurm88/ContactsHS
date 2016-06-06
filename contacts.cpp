@@ -2,7 +2,9 @@
 #include<set>
 
 #include "contacts.hpp"
+#include<iostream>
 #include "trie.hpp"
+#include "contactSanity.hpp"
 using namespace std;
 
 contact_t* addContact(string firstName, string lastName){
@@ -40,7 +42,7 @@ void removeNonLastNames(set<string>& results, string lastName){
             results.erase(it);
             continue;
         }
-        if(fullLastName.compare(0, lastName.size(), lastName))
+        if(fullLastName.compare(0, lastName.size(), capitalize(lastName)))
             results.erase(it);
     }
 }
