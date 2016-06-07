@@ -23,6 +23,7 @@
 #include <cctype>
 #include <iostream>
 #include <string>
+#include <climits>
 #include <set>
 #include <algorithm>
 #include "trie.hpp"
