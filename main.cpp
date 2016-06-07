@@ -116,7 +116,7 @@ void runInputLoop(){
                         name = inp;
                         addContact(name);
                     }else{
-                        cerr<<"Bad input. Please try again."<<endl;
+                        cerr<<"Invalid input. Please try again."<<endl;
                         cin.clear();
                         cin.ignore(INT_MAX, '\n');
                     }
@@ -128,7 +128,7 @@ void runInputLoop(){
                         name = inp;
                         searchAndDisplay(name);
                     }else{
-                        cerr<<"Bad input. Please try again."<<endl;
+                        cerr<<"Invalid input. Please try again."<<endl;
                         cin.clear();
                         cin.ignore(INT_MAX, '\n');
                     }
@@ -137,14 +137,14 @@ void runInputLoop(){
                     break;
             }
         }else if(cin.bad()){
-            cerr<<"Bad input. Please try again"<<endl;
+            cerr<<"Invalid input. Please try again"<<endl;
             cin.clear();
             cin.ignore(INT_MAX, '\n');
         }else if(cin.eof()){
             cerr<<"Got EOF. Exiting."<<endl;
             exit(0);
         }else{
-            cerr<<"Format error. Please try again."<<endl;
+            cerr<<"Invalid input. Please try again."<<endl;
             cin.clear();
             cin.ignore(INT_MAX, '\n');
         }
