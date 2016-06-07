@@ -24,7 +24,7 @@ struct trie{
 }typedef contactTrie;
 
 int addStringToTrie(contactTrie* root, string str, struct contact *contactToInsert, bool first_name);
-void initTrie(contactTrie*);
+void initTrieNode(contactTrie*);
 void traverseTrie(contactTrie* root, set<string>& results);
 void searchTrie(contactTrie* root, string name, set<string>& results);
 

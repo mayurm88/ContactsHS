@@ -2,7 +2,7 @@
 #include "trie.hpp"
 #include "contactSanity.hpp"
 
-void initTrie(contactTrie* trie){
+void initTrieNode(contactTrie* trie){
     for(int i = 0; i < NUMBER_CHILDREN; i++)
         trie->child[i] = NULL;
     trie->fcontact = NULL;
@@ -12,13 +12,8 @@ void initTrie(contactTrie* trie){
 
 contactTrie* getTrieNode(void){
     contactTrie* newNode = new contactTrie;
-    if(newNode){
-        newNode->isLeafNode = false;
-        for(int i = 0; i < NUMBER_CHILDREN; i++)
-            newNode->child[i] = NULL;
-        newNode->fcontact = NULL;
-        newNode->lcontact = NULL;
-    }
+    if(newNode)
+        initTrieNode(newNode);
     return newNode;
 }
 
@@ -27,7 +22,6 @@ int addStringToTrie(contactTrie* root, string str, struct contact *contactToInse
     int err = 0, inx;
     contactTrie* cur = root;
     contact_t* contactNode;
-    //cout<<"In addStringToTrie with firstname : "<<contactToInsert->firstName<<" lastname : "<<contactToInsert->lastName<<endl;
     for(int i = 0; i < str.length(); i++){
         inx = CHAR_TO_INX(str[i]);
         if(!cur->child[inx]){

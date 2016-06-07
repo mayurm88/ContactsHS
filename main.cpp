@@ -96,7 +96,7 @@ void runInputLoop(){
     char inp[100];
     string name;
     rootTrie = new contactTrie;
-    initTrie(rootTrie);
+    initTrieNode(rootTrie);
     
     while(choice != 3){
         cout<<"1) Add contact 2) Search 3) Exit"<<endl;
