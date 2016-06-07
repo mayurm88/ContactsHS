@@ -1,6 +1,6 @@
 #include<string>
 #include<set>
-
+#include <iostream>
 #include "contacts.hpp"
 #include "trie.hpp"
 #include "contactSanity.hpp"
@@ -19,6 +19,7 @@ void searchName(contactTrie* root, string name, set<string>& results){
     if(name.empty()){
         results.clear();
         traverseTrie(root, results);
+        return;
     }
     searchTrie(root, name, results);
 }

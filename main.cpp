@@ -59,14 +59,20 @@ void addContact(string name){
 
 }
 
+void displayResults(set<string>& results){
+    set<string>::iterator it;
+    for (it = results.begin(); it != results.end(); ++it)
+            cout << *it << endl;
+}
+
 void searchAndDisplay(string name){
     int err = 0;
     set<string> results;
-    set<string>::iterator it;
     string firstName, lastName, formatName;
     transform(name.begin(), name.end(), name.begin(), ::tolower);
     if (name.empty()) {
         searchName(rootTrie, name, results);
+        displayResults(results);
         return;
     }
     err = doInputSanity(name);
@@ -86,8 +92,7 @@ void searchAndDisplay(string name){
     if (results.empty())
         cout << "No matching results found." << endl;
     else
-        for (it = results.begin(); it != results.end(); ++it)
-            cout << *it << endl;
+        displayResults(results);
     
 }
 
