@@ -6,7 +6,9 @@
 using namespace std;
 
 int doInputSanity(string name){
-    //Implement checking of input format
+    /* Checks for nonalpha characters and long names.
+     * returns appropriate errors.
+     */
     size_t pos;
     pos = name.find_first_not_of("abcdefghijklmnopqrstuvwxyz \t");
     if(pos != string::npos)
@@ -17,6 +19,8 @@ int doInputSanity(string name){
 }
 
 string trimWhiteSpaces(string name){
+    /* Trims white spaces from beginning and end of the input string.
+     */
     size_t pos;
     pos = name.find_first_not_of(" \t");
     size_t posEnd = name.find_last_not_of(" \t");
@@ -24,6 +28,11 @@ string trimWhiteSpaces(string name){
 }
 
  string convertToOurFormat(string name){
+     /* Given a string containing one or more words with multiple 
+      * spaces and tabs between the words, this function returns
+      * first two words(one if there was only one word) with just one space
+      * in between.
+      */
      string trimmedName = trimWhiteSpaces(name);
      size_t pos = trimmedName.find_first_of(" \t");
      if(pos == string::npos)
@@ -64,7 +73,6 @@ void splitName(string name, string& fName, string& lName){
 }
 
 void reportErr(int err){
-    //Implement error reporting.
     switch(err){
         case ERR_NONALPHA:
             cerr<<"Only Alphabets and spaces allowed. Please try again."<<endl;
@@ -76,6 +84,8 @@ void reportErr(int err){
 }
 
 string capitalize(string name){
+    /* Capitalizes the first letter of the string.
+     */
     name[0] = toupper(name[0]);
     return name;
 }

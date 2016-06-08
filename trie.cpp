@@ -3,6 +3,8 @@
 #include "contactSanity.hpp"
 
 void initTrieNode(contactTrie* trie){
+    /* Initializes a trie node.
+     */
     for(int i = 0; i < NUMBER_CHILDREN; i++)
         trie->child[i] = NULL;
     trie->fcontact = NULL;
@@ -11,6 +13,8 @@ void initTrieNode(contactTrie* trie){
 }
 
 contactTrie* getTrieNode(void){
+    /* Creates a new trie node, intializes and returns it.
+     */
     contactTrie* newNode = new contactTrie;
     if(newNode)
         initTrieNode(newNode);
@@ -19,6 +23,15 @@ contactTrie* getTrieNode(void){
 
 
 int addStringToTrie(contactTrie* root, string str, struct contact *contactToInsert, bool first_name){
+    /*  Adds the input string to trie. Every string is associated with an incoming contact structure
+     *  which should be pointed by the leaf node of this string.
+     * 
+     *  If the incoming string is a first name then the trie's fcontact points
+     *  to this structure, else trie's lcontact points to this structure.
+     * 
+     *  If fcontact or lcontact already exist, we'll traverse to the end of the list
+     *  and insert the contact there.
+     */
     int err = 0, inx;
     contactTrie* cur = root;
     contact_t* contactNode;
@@ -55,6 +68,9 @@ int addStringToTrie(contactTrie* root, string str, struct contact *contactToInse
 
 
 void traverseTrie(contactTrie* root, set<string>& results){
+    /* Given a trie node and a result set, this function traverses all the leaf nodes
+     * of the subtree rooted at the given node and adds all the contacts to the results set.
+     */
     struct contact* contactNode;
     assert(!(root->isLeafNode && root->fcontact == NULL && root->lcontact == NULL));
     if(root->isLeafNode){
@@ -76,6 +92,8 @@ void traverseTrie(contactTrie* root, set<string>& results){
 }
 
 void searchTrie(contactTrie* root, string name, set<string>& results){
+    /* Finds the trie node whose subtree needs to be added to the result set.
+     */
     int inx = 0;
     contactTrie* cur = root;
     for(int i = 0; i < name.length(); i++){

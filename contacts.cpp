@@ -16,6 +16,10 @@ contact_t* addContact(string firstName, string lastName){
 }
 
 void searchName(contactTrie* root, string name, set<string>& results){
+    /* If input name is empty, traverse the entire trie.
+     * else
+     * Search for the name in the trie.
+     */
     if(name.empty()){
         results.clear();
         traverseTrie(root, results);
@@ -25,6 +29,10 @@ void searchName(contactTrie* root, string name, set<string>& results){
 }
 
 string getLastNameFromString(string name){
+    /* Given a string containing one/two words separated by a single tab or space,
+     * this function returns the second word if there is any or else returns 
+     * empty string.
+     */
     size_t pos;
     pos = name.find_first_of(" \t");
     if(pos == string::npos)
@@ -34,6 +42,9 @@ string getLastNameFromString(string name){
 }
 
 void removeNonLastNames(set<string>& results, string lastName){
+    /* Remove all names from the result set whose last name does not start with
+     * the input lastName parameter.
+     */
     set<string>::iterator it;
     string fullLastName;
     for(it=results.begin(); it != results.end();){
