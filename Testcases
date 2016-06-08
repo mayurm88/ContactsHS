@@ -1,0 +1,67 @@
+Here I am listing down some of the unit test cases that were done. These are manual test cases
+and currently no Test framework is used to test this application.
+
+Input Tests
+
+1. Spaces/Tabs in front and back of the name.
+    --> App deletes it and stores it in <firstname lastname> format.
+2. Spaces/Tabs in middle of the name.
+    --> App deletes it and stores it in <firstname lastname> format.
+3. Special characters in search/add.
+    --> App throws an error "Only Alphabets and spaces allowed. Please try again."
+4. Mixed case
+    --> App converts to proper case and stores it in <firstname lastname> format.
+5. About 100 characters input.
+    --> App throws an error "Name too long. Only 50 character names allowed. Please try again."
+6. About 200 characters input.
+    --> App throws an error "Invalid input. Please try again."
+7. EOF.
+    --> App throws an error and exits.
+8. Entering string when choice(integer) is expected.
+    --> App throws an error "Invalid input. Please try again."
+9. Entering more than 3 words in add
+    --> App does not throw an error. Instead stores the first two words in <firstname lastname> format.
+10. Entering more than 3 words in search
+    --> App does not throw an error. Instead searches with first two words of the input and gives 
+        results if any matched.
+
+Functional tests
+
+1. Add a simple name and search.
+    --> Working.
+2. Add multiple names and only firstname.
+    --> Example: enter John 5 times. Search only shows it once.
+3. Add multiple first name with changing second names.
+    --> Example:
+            Priyanka
+            Priyanka Mahajan
+            Priyanka Deodhar
+            Priyanka Kamkar
+        Then search for pri, deo
+        Results:
+            All Priyankas and <Priyanka Deodhar> respectively.
+4. Now add Priyanka as last name.
+    --> Example:
+            Usha Priyanka
+        Search for pri
+        Results:
+            All Priyankas + Usha Priyanka
+
+5. Search for exact matches.
+    --> Example: Search for 'Priyanka'
+        Results: Exact match 'Priyanka' comes first.
+
+6. Search for half first names and half last names.
+    --> Example: Search for 'Pri Ma'
+        Results: Only Priyanka Mahajan is displayed.
+
+7. Search for last names.
+    --> Working.
+
+8. Search for full firstname and half lastname.
+    --> Example: Search for Priyanka D
+        Results: Priyanka Deodhar
+
+9. Search for half firstname and full lastname.
+    --> Example: Search for Pri Kamkar
+        Results: Priyanka Kamkar

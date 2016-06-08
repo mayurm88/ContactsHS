@@ -1,0 +1,55 @@
+About: 
+ A simple(in memory) add and search contact application. i.e. Contacts will not be preserved across multiple
+ runs of the program.
+ A contact is defined as <firstname lastname> and has maximum length 50.
+ You can add any contact with the above format and it will be searchable in the application.
+ 
+Assumptions:
+ 1) If you add/search a name which has more than two words, only the first two words will be taken into
+    consideration.
+ 2) The application is case insensitive. No matter what case you add your contacts in,
+    search will always display names in Proper Case.
+ 3) For erratic inputs, the program will exit.
+ 4) For special characters in the name, program will throw an error.
+
+Building and running:
+
+Ubuntu:
+
+You will need the following tools to run this application.
+git, make, g++
+
+Pre-requisites:
+ If you do not have the above tools please install them via the following command:
+
+ sudo apt-get update
+ sudo apt-get install git make g++
+
+Follow steps below to compile and run the app:
+
+ 1. Go to any directory you want the source code to be downloaded
+ 2. type 'git clone https://github.com/musicophilic/ContactsHS'
+ 3. cd ContactsHS
+ 4. make clobber clean all
+ 5. run the application by ./dist/Release/GNU-MacOSX/contactshs
+
+MAC:
+
+You will need the following tools to run this application.
+git, make, g++
+
+Pre-requisites:
+ If you do not have the above tools please install xcode commandline tools
+ For installing git, please install homebrew and fire a brew install git command.
+
+Follow steps below to compile and run the app:
+
+ 1. Go to any directory you want the source code to be downloaded
+ 2. type 'git clone https://github.com/musicophilic/ContactsHS'
+ 3. cd ContactsHS
+ 4. make clobber clean all
+ 5. run the application by ./dist/Release/GNU-MacOSX/contactshs
+
+Windows:
+
+Above steps should work with cygwin. However, I have not built and tested on windows.

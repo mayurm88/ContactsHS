@@ -11,6 +11,8 @@
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
+      <itemPath>README</itemPath>
+      <itemPath>Testcases</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -45,6 +47,10 @@
           <commandLine>-I/usr/local/include</commandLine>
         </ccTool>
       </compileType>
+      <item path="README" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Testcases" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="contactSanity.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="contactSanity.hpp" ex="false" tool="3" flavor2="0">
@@ -53,6 +59,20 @@
       </item>
       <item path="contacts.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="trie.cpp" ex="false" tool="1" flavor2="0">
@@ -80,6 +100,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="README" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Testcases" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="contactSanity.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="contactSanity.hpp" ex="false" tool="3" flavor2="0">
@@ -88,6 +112,20 @@
       </item>
       <item path="contacts.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="trie.cpp" ex="false" tool="1" flavor2="0">
