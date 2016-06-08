@@ -36,13 +36,16 @@ string getLastNameFromString(string name){
 void removeNonLastNames(set<string>& results, string lastName){
     set<string>::iterator it;
     string fullLastName;
-    for(it=results.begin(); it != results.end(); ++it){
+    for(it=results.begin(); it != results.end();){
         fullLastName = getLastNameFromString(*it);
         if(fullLastName.empty()){
-            results.erase(it);
+            results.erase(it++);
             continue;
         }
-        if(fullLastName.compare(0, lastName.size(), capitalize(lastName)))
-            results.erase(it);
+        if(fullLastName.compare(0, lastName.size(), capitalize(lastName))){
+            results.erase(it++);
+            continue;
+        }
+        ++it;
     }
 }
